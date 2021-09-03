@@ -1,0 +1,27 @@
+<div class="row justify-content-between mb-4">
+    <div class="col-4">    
+        <h1>Crear Nueva Categoría</h1>
+    </div>
+    <div class="col-3 ms-5">
+        <%= link_to categorias_path, class:"btn btn-primary rounded-pill" do %>
+            <i class="bi bi-card-list"></i>
+            Volver a Lista Categorías
+        <% end %>
+    </div>
+</div>
+<div class="fw-bolder" >    
+    <%= form_with(model: @categoria_nueva, url: '/categorias/guardar') do |formulario| %>
+        <% if @categoria_nueva.errors.any? %>
+            <% @categoria_nueva.errors.each do |error| %>
+                <p style="color:red;"> <%= error.full_message %></p>
+            <% end %>
+        <% end %>
+            <div class="mb-3 col-6">
+                <%= formulario.label :categoria, class: 'form-label' %>
+                <%= formulario.text_field :categoria, class: 'form-control rounded-pill', autofocus: "autofocus" %>
+            </div>
+            <br>
+            
+            <%= formulario.submit 'Crear Categoria', class:"btn btn-primary rounded-pill" %>
+</div>
+<% end %>
